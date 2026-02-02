@@ -40,10 +40,12 @@ budget_per_person=st.number_input("what is your budget_per_person?")
 cuisine=st.text_input("what is your cuisine of interest?")
 number_of_people=st.number_input("How many people coming?")
 
-prompt=template.format(location=location,budget_per_person=budget_per_person,cuisine=cuisine,number_of_people=number_of_people)
+# prompt=template.format(location=location,budget_per_person=budget_per_person,cuisine=cuisine,number_of_people=number_of_people)
+
+chain=template | llm
 
 if location and budget_per_person and cuisine and number_of_people:
-    response=llm.invoke(prompt)
+    response=chain.invoke({"location":location,"budget_per_person":budget_per_person,"cuisine":cuisine,"number_of_people":number_of_people})
     st.write(response.content)
 else:
     st.write("please provide all the fields")
