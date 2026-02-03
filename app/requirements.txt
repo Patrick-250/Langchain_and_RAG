@@ -1,4 +1,5 @@
 dotenv
+numpy
 streamlit
 langchain
 langchain_community
