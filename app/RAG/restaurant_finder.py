@@ -19,12 +19,12 @@ chunks=text_splitter.split_documents(document)
 
 # print(chunks[0])
 
-db=Chroma.from_documents(chunks,embedding_model)
-retriever=db.as_retriever()
+vector_store=Chroma.from_documents(chunks,embedding_model)
+retriever=vector_store.as_retriever()
 
-question=input("Ask me about restaurant recommendation ")
+# question=input("Ask me about restaurant recommendation ")
 # question_embedding=embedding_model.embed_query(question)
 
-matching_docs=retriever.invoke(question)
+# matching_docs=retriever.invoke(question)
 
-print(matching_docs[0].page_content)
+# print(matching_docs[0].page_content)
