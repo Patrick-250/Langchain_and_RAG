@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_classic.chains import create_retrieval_chain
+from langchain_classic.chains import create_retrieval_chain,create_history_aware_retriever
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -38,8 +38,9 @@ chunks=text_splitter.split_documents(document)
 vector_store=Chroma.from_documents(chunks,embedding_model)
 retriever=vector_store.as_retriever()
 
+history_aware_retriever=create_history_aware_retriever(llm,retriever,prompt_template)
 qa_chain=create_stuff_documents_chain(llm=llm,prompt=prompt_template)
-rag_chain=create_retrieval_chain(retriever,qa_chain)
+rag_chain=create_retrieval_chain(history_aware_retriever,qa_chain)
 
 print("ask me about restaurants ")
 question=input("I can help you find a restaurant....")
