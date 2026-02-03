@@ -19,3 +19,12 @@ chunks=text_splitter.split_documents(document)
 
 # print(chunks[0])
 
+db=Chroma.from_documents(chunks,embedding_model)
+
+question=input("Ask me about restaurant recommendation ")
+question_embedding=embedding_model.embed_query(question)
+
+matching_docs=db.similarity_search_by_vector(question_embedding)
+
+for doc in matching_docs:
+    print(doc.page_content)
