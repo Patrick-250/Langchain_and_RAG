@@ -2,6 +2,8 @@ dotenv
 numpy
 streamlit
 langchain
+langgraph
+langchain-mcp-adapters
 langchain_community
 langchain-openai
 langchain_classic
