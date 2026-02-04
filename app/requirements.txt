@@ -7,4 +7,6 @@ langchain-openai
 langchain_classic
 langchain_text_splitters
 langchain_chroma
+wikipedia
+ddgs
 

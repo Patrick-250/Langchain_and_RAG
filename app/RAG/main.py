@@ -20,7 +20,7 @@ llm=init_chat_model(
 
 prompt_template=ChatPromptTemplate.from_messages(
     [("system","""you are a restaurant recommendor that help the user find the restaurant that matches their requirements.
-    if the answer is not clear, acknowledge that you do not know. limit your answer to 2-4 consise sentences.{context}"""),
+    if  the answer  is not clear, acknowledge that you do not know. limit your answer to 2-4 consise sentences.{context}"""),
     ("human","{input}")
     ]
 )
