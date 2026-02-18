@@ -1,0 +1,4 @@
+-pre-retrieval and post retrieval(combine retrived docs with the query againt to make sure its relevant... reranking)
+
+-query expansion..... we can expand with potential answers...(make it hallucinate a lil bit lols)
+-
