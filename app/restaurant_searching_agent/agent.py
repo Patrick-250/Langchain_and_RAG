@@ -10,9 +10,8 @@ load_dotenv()
 
 api_key=os.getenv("OPENAI_API_KEY")
 
-
 llm=init_chat_model(
-   
+    api_key=api_key,
     model="gpt-4o-mini"
 )
 
@@ -38,7 +37,7 @@ def search_online(user_message: str) -> dict:
     return tavily.search(query=user_message)  # search the internet
 
 
-tools=[search_online]
+tools=[]
 agent=create_agent(
     model=llm,
     tools=tools,
@@ -57,3 +56,5 @@ if user_message:
     final_message=result["messages"][-1]
 
     st.write(final_message.content)
+
+
