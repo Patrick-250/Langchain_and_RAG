@@ -10,4 +10,4 @@ langchain_classic
 langchain_text_splitters
 langchain_chroma
 langchain-tavily
-tavily_python
+# tavily_python #changing this to use tavily abstraction from langchain

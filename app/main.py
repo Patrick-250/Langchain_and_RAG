@@ -4,7 +4,7 @@ from langchain.chat_models import init_chat_model
 from langchain.agents import create_agent
 from langchain.tools import tool
 import streamlit as st
-from tavily import TavilyClient
+from langchain_tavily import TavilySearch
 
 load_dotenv()
 
@@ -16,7 +16,7 @@ llm=init_chat_model(
     model="gpt-4o-mini"
 )
 
-tavily=TavilyClient()
+# tavily=TavilyClient() #used langchain tavily internal
 
 reAct_system_prompt="""
 You are a refined, intelligent, and hospitality-minded Restaurant Search Agent. 
@@ -24,21 +24,21 @@ Your purpose is to help users discover exceptional dining experiences tailored p
 including location, cuisines and availability.
 
 """
-@tool
-def search_online(user_message: str) -> dict:
-    """
-    tool that search over internet for available restaurants based on user's preference
-    args:location and cuisine
-    Returns:
-    the search results
+# @tool
+# def search_online(user_message: str) -> dict:
+#     """
+#     tool that search over internet for available restaurants based on user's preference
+#     args:location and cuisine
+#     Returns:
+#     the search results
 
 
-    """
-    print(f"searching an answer for {user_message}")
-    return tavily.search(query=user_message)  # search the internet
+#     """
+#     print(f"searching an answer for {user_message}")
+#     return tavily.search(query=user_message)  
 
 
-tools=[search_online]
+tools=[TavilySearch()] #langchain tavily search abstraction
 agent=create_agent(
     model=llm,
     tools=tools,
