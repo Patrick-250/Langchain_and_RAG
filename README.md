@@ -1,4 +1,4 @@
-# AI Restaurant Search and Booking Agent
+# AI Restaurant Search and Booking System
 
 An intelligent restaurant discovery assistant built with LangChain, MCP tools, and Streamlit.
 The agent helps users find restaurants based on their preferences such as location, cuisine, and availability, and can assist with making reservations.
