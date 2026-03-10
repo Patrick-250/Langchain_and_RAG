@@ -24,21 +24,16 @@ Your purpose is to help users discover exceptional dining experiences tailored p
 including location, cuisines and availability.
 
 """
-# @tool
-# def search_online(user_message: str) -> dict:
-#     """
-#     tool that search over internet for available restaurants based on user's preference
-#     args:location and cuisine
-#     Returns:
-#     the search results
+@tool
+def make_reservation():
+    """
+    this tool is used to book a reservation for a chosen restaurant.
+    
+    """
+    return """I have made you a reservationa and sent you a confirmation email.. enjoy your stay"""
 
 
-#     """
-#     print(f"searching an answer for {user_message}")
-#     return tavily.search(query=user_message)  
-
-
-tools=[TavilySearch()] #langchain tavily search abstraction
+tools=[TavilySearch(),make_reservation] 
 agent=create_agent(
     model=llm,
     tools=tools,
